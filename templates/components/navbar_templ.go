@@ -29,7 +29,7 @@ func Navbar() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\"><div class=\"container\"><a class=\"navbar-brand\" href=\"/\">Компания</a> <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarNav\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"/about\">О компании</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/services\">Услуги</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/contact\">Контакты</a></li></ul></div></div></nav>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm\" id=\"mainNav\"><div class=\"container\"><a class=\"navbar-brand fw-bold\" href=\"/\">🚀 Компания</a> <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarNav\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"/about\">О компании</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/services\">Услуги</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/contact\">Контакты</a></li></ul></div></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

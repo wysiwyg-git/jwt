@@ -9,16 +9,13 @@ templ Base(title string) {
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>{ title }</title>
-		<!-- Локальный Bootstrap CSS -->
 		<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/static/css/bootstrap-icons.css"/>
-        <link rel="icon" type="image/png" href="/static/images/favicon.png"/>
-		<!-- Если будет свой файл стилей: -->
-		<!-- <link rel="stylesheet" href="/static/css/custom.css"/> -->
+		<link rel="stylesheet" href="/static/css/bootstrap-icons.css"/>
+		<link rel="stylesheet" href="/static/css/custom.css"/>
+        <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
 	</head>
 	<body>
-		{ children... }  <!-- Сюда будут вставлены секции страницы -->
-		<!-- Локальный Bootstrap JS -->
+		{ children... }
 		<script src="/static/js/bootstrap.bundle.min.js"></script>
 	</body>
 	</html>
