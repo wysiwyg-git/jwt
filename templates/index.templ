@@ -1,0 +1,16 @@
+package templates
+
+import (
+	"company-site/templates/components"
+)
+
+templ IndexPage() {
+	@Base("Компания | Главная") {
+		@components.Navbar()
+		@components.Hero()
+		@components.About()
+		@components.Services()
+		@components.Contact()
+		@components.Footer()
+	}
+}

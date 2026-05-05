@@ -1,0 +1,14 @@
+package components
+
+import(
+    "fmt"
+    "time"
+)
+
+templ Footer() {
+	<footer class="bg-dark text-white text-center py-3">
+		<div class="container">
+			<p class="mb-0">&copy; { fmt.Sprintf("%d", time.Now().Year()) } Компания. Все права защищены.</p>
+		</div>
+	</footer>
+}
