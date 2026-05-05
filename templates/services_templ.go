@@ -49,7 +49,7 @@ func ServicesPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Наши услуги</h1><div class=\"row g-4\"><div class=\"col-md-4\"><div class=\"card h-100 shadow-sm\"><div class=\"card-body\"><h5 class=\"card-title\">Веб-разработка</h5><p class=\"card-text\">Создание современных адаптивных сайтов любой сложности.</p></div></div></div><!-- ... еще услуги --></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Наши услуги</h1><div class=\"row g-4\"><div class=\"col-md-4\"><div class=\"card h-100 shadow-sm\"><div class=\"card-body\"><h5 class=\"card-title\">Поставка</h5><p class=\"card-text\">Клеи разных видов</p></div></div></div><!-- ... еще услуги --></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

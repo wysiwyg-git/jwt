@@ -29,7 +29,7 @@ func About() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"about\" class=\"py-5\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-lg-6\"><h2>О компании</h2><p class=\"text-muted\">Мы команда экспертов с многолетним опытом в области IT-консалтинга и разработки. Наши решения помогают клиентам опережать конкурентов.</p></div><div class=\"col-lg-6\"><!-- Изображение-заглушка, можно заменить своим --><img src=\"/static/images/about.jpg\" alt=\"О нас\" class=\"img-fluid rounded shadow\"></div></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"about\" class=\"py-5\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-lg-6\"><h2>О компании «ПромКлей»</h2><p class=\"text-muted\">Более 10 лет мы поставляем высококачественные промышленные клеи, герметики и технические жидкости для предприятий машиностроения, строительства, металлообработки и других отраслей. Работаем напрямую с производителями, гарантируем стабильное качество и выгодные цены.</p></div><div class=\"col-lg-6\"><img src=\"/static/images/about.jpg\" alt=\"Склад клеев\" class=\"img-fluid rounded shadow\"></div></div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

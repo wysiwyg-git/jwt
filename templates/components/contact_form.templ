@@ -1,0 +1,49 @@
+package components
+
+import "company-site/models"
+
+templ ContactForm(data models.ContactFormData) {
+	<form method="post" action="/contact" class="needs-validation" novalidate>
+		<!-- Имя -->
+		<div class="mb-3">
+			<label for="name" class="form-label">Имя *</label>
+			<input type="text" name="name" id="name" class="form-control"
+				value={ data.Name }
+				required/>
+			if data.Errors["name"] != "" {
+				<div class="invalid-feedback d-block">{ data.Errors["name"] }</div>
+			}
+		</div>
+		<!-- Компания -->
+		<div class="mb-3">
+			<label for="company" class="form-label">Компания</label>
+			<input type="text" name="company" id="company" class="form-control"
+				value={ data.Company }/>
+		</div>
+		<!-- Email -->
+		<div class="mb-3">
+			<label for="email" class="form-label">Email *</label>
+			<input type="email" name="email" id="email" class="form-control"
+				value={ data.Email }
+				required/>
+			if data.Errors["email"] != "" {
+				<div class="invalid-feedback d-block">{ data.Errors["email"] }</div>
+			}
+		</div>
+		<!-- Телефон -->
+		<div class="mb-3">
+			<label for="phone" class="form-label">Телефон</label>
+			<input type="tel" name="phone" id="phone" class="form-control"
+				value={ data.Phone }/>
+		</div>
+		<!-- Сообщение -->
+		<div class="mb-3">
+			<label for="message" class="form-label">Сообщение *</label>
+			<textarea name="message" id="message" rows="5" class="form-control" required>{ data.Message }</textarea>
+			if data.Errors["message"] != "" {
+				<div class="invalid-feedback d-block">{ data.Errors["message"] }</div>
+			}
+		</div>
+		<button type="submit" class="btn btn-primary px-4">Отправить запрос</button>
+	</form>
+}

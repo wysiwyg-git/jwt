@@ -49,7 +49,7 @@ func AboutPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">О компании</h1><div class=\"row\"><div class=\"col-lg-8\"><p class=\"lead\">Мы команда профессионалов с многолетним опытом...</p><p>Подробная история компании, миссия, ценности.</p></div><div class=\"col-lg-4\"><img src=\"/static/images/about.jpg\" class=\"img-fluid rounded shadow\" alt=\"О нас\"></div></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">О компании</h1><div class=\"row\"><div class=\"col-lg-8\"><p class=\"lead\">«ПромКлей» — надёжный поставщик промышленных клеев, герметиков, анаэробных составов и технических жидкостей для предприятий России и стран СНГ.</p><p>Мы сотрудничаем с ведущими мировыми производителями, такими как Loctite, Permabond, Weicon, и гарантируем оригинальность всей продукции. Наш складской запас позволяет отгружать большинство позиций в день заказа.</p><p>Среди наших клиентов — машиностроительные заводы, ремонтные предприятия, строительные компании, сервисные центры и производители электроники.</p></div><div class=\"col-lg-4\"><img src=\"/static/images/about.jpg\" class=\"img-fluid rounded shadow\" alt=\"О компании\"></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -59,7 +59,7 @@ func AboutPage() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Base("О компании").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Base("О компании | ПромКлей").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

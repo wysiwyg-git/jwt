@@ -29,7 +29,7 @@ func Hero() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"hero-section d-flex align-items-center text-white\"><div class=\"container text-center py-5\"><h1 class=\"display-3 fw-bold mb-3\">Профессиональные решения для бизнеса</h1><p class=\"lead mb-4\">Мы помогаем компаниям расти и достигать целей</p><a href=\"/contact\" class=\"btn btn-outline-light btn-lg px-5 rounded-pill\">Связаться с нами</a></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"hero-section d-flex align-items-center text-white\"><div class=\"container text-center py-5\"><h1 class=\"display-3 fw-bold mb-3\">Промышленные клеи и герметики</h1><p class=\"lead mb-4\">Поставки для производства, строительства и ремонта по всей России</p><a href=\"/contact\" class=\"btn btn-outline-light btn-lg px-5 rounded-pill\">Запросить консультацию</a></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

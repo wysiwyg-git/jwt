@@ -9,10 +9,11 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"company-site/models"
 	"company-site/templates/components"
 )
 
-func ContactPage() templ.Component {
+func ContactPage(data models.ContactFormData, success bool) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -49,7 +50,25 @@ func ContactPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Контакты</h1><div class=\"row\"><div class=\"col-md-6\"><p><strong>Телефон:</strong> +7 (000) 000-00-00</p><p><strong>Email:</strong> info@company.ru</p><p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p></div></div></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Контакты</h1><div class=\"row\"><div class=\"col-md-5 mb-4\"><h4>Наши реквизиты</h4><ul class=\"list-unstyled\"><li class=\"mb-2\"><i class=\"bi bi-telephone me-2\"></i> +7 (800) 123-45-67</li><li class=\"mb-2\"><i class=\"bi bi-envelope me-2\"></i> sale@promkley.ru</li><li class=\"mb-2\"><i class=\"bi bi-geo-alt me-2\"></i> г. Москва, ул. Промышленная, д. 15</li></ul><div class=\"mt-4\"><h5>Следите за нами</h5><a href=\"#\" class=\"text-dark me-2\"><i class=\"bi bi-telegram fs-4\"></i></a> <a href=\"#\" class=\"text-dark\"><i class=\"bi bi-whatsapp fs-4\"></i></a></div></div><div class=\"col-md-7\"><div class=\"card shadow-sm\"><div class=\"card-body p-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			if success {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"alert alert-success\" role=\"alert\">Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.</div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<h3 class=\"card-title mb-4\">Оставьте заявку</h3>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = components.ContactForm(data).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div></div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -59,7 +78,7 @@ func ContactPage() templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Base("Контакты").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Base("Контакты | ПромКлей").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
