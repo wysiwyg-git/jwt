@@ -1,0 +1,22 @@
+package templates
+
+import (
+	"company-site/templates/components"
+)
+
+templ ContactPage() {
+	@Base("Контакты") {
+		@components.Navbar()
+		<div class="container py-5">
+			<h1 class="display-4 mb-4">Контакты</h1>
+			<div class="row">
+				<div class="col-md-6">
+					<p><strong>Телефон:</strong> +7 (000) 000-00-00</p>
+					<p><strong>Email:</strong> info@company.ru</p>
+					<p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p>
+				</div>
+			</div>
+		</div>
+		@components.Footer()
+	}
+}

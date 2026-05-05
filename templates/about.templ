@@ -1,0 +1,24 @@
+package templates
+
+import (
+	"company-site/templates/components"
+)
+
+templ AboutPage() {
+	@Base("О компании") {
+		@components.Navbar()
+		<div class="container py-5">
+			<h1 class="display-4 mb-4">О компании</h1>
+			<div class="row">
+				<div class="col-lg-8">
+					<p class="lead">Мы команда профессионалов с многолетним опытом...</p>
+					<p>Подробная история компании, миссия, ценности.</p>
+				</div>
+				<div class="col-lg-4">
+					<img src="/static/images/about.jpg" class="img-fluid rounded shadow" alt="О нас"/>
+				</div>
+			</div>
+		</div>
+		@components.Footer()
+	}
+}
