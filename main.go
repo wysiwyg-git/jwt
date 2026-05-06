@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 
+	"company-site/mailer"
 	"company-site/models"
 	"company-site/templates"
 
@@ -70,12 +71,11 @@ func renderNotFound(w http.ResponseWriter, r *http.Request) {
 func contactHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
-		success := r.URL.Query().Get("success") == "1"
-		data := models.ContactFormData{}
+		success := r.URL.Query().Get("success")
+		var data models.ContactFormData
 		render(w, r, templates.ContactPage(data, success))
 	case http.MethodPost:
-		err := r.ParseForm()
-		if err != nil {
+		if err := r.ParseForm(); err != nil {
 			http.Error(w, "Bad Request", http.StatusBadRequest)
 			return
 		}
@@ -87,16 +87,20 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 			Message: r.FormValue("message"),
 		}
 		if models.ValidateContactForm(&data) {
-			// Успешно: здесь будет отправка письма или сохранение в БД
-			log.Printf("Получено сообщение от %s (%s): %s", data.Name, data.Email, data.Message)
-			// Перенаправление на страницу "Спасибо" или отображение success-сообщения
-			// Воспользуемся query-параметром для простоты
+			// Отправка письма
+			cfg := mailer.LoadConfig()
+			body := mailer.BuildContactBody(data.Name, data.Company, data.Email, data.Phone, data.Message)
+			if err := cfg.Send("Новая заявка с сайта ПромКлей", body); err != nil {
+				log.Printf("Ошибка отправки email: %v", err)
+				http.Redirect(w, r, "/contact?success=0", http.StatusSeeOther)
+				return
+			}
+			// Успех
 			http.Redirect(w, r, "/contact?success=1", http.StatusSeeOther)
 			return
 		}
-		// Есть ошибки — снова рендерим форму с данными и ошибками
-		success := r.URL.Query().Get("success") == "1"
-		render(w, r, templates.ContactPage(data, success))
+		// Ошибки валидации – показываем форму снова
+		render(w, r, templates.ContactPage(data, ""))
 	default:
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
