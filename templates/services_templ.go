@@ -45,7 +45,7 @@ func ServicesPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = components.Navbar().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.Navbar("services").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

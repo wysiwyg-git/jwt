@@ -8,7 +8,7 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func Navbar() templ.Component {
+func Navbar(active string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +29,7 @@ func Navbar() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm\" id=\"mainNav\"><div class=\"container\"><a class=\"navbar-brand fw-bold\" href=\"/\">🚀 Компания</a> <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarNav\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class=\"nav-link\" href=\"/about\">О компании</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/services\">Услуги</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"/contact\">Контакты</a></li></ul></div></div></nav>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark sticky-top\" id=\"mainNav\"><div class=\"container\"><a class=\"navbar-brand fw-bold\" href=\"/\">🚀 ПромКлей</a> <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\"><span class=\"navbar-toggler-icon\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarNav\"><ul class=\"navbar-nav ms-auto\"><li class=\"nav-item\"><a class='nav-link { active == \"home\" ? \"active\" : \"\" }' href=\"/\">Главная</a></li><li class=\"nav-item\"><a class='nav-link { active == \"about\" ? \"active\" : \"\" }' href=\"/about\">О компании</a></li><li class=\"nav-item\"><a class='nav-link { active == \"services\" ? \"active\" : \"\" }' href=\"/services\">Услуги</a></li><li class=\"nav-item\"><a class='nav-link { active == \"contact\" ? \"active\" : \"\" }' href=\"/contact\">Контакты</a></li></ul></div></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

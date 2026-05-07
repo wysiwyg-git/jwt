@@ -7,7 +7,7 @@ import (
 
 templ ContactPage(data models.ContactFormData, success string) {
 	@Base("Контакты | ПромКлей") {
-		@components.Navbar()
+		@components.Navbar("contact")
 		<div class="container py-5">
 			<h1 class="display-4 mb-4">Контакты</h1>
 			<div class="row">

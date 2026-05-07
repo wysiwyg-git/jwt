@@ -2,8 +2,11 @@ package main
 
 import (
 	"log"
+	"net"
 	"net/http"
 	"os"
+	"sync"
+	"time"
 
 	"company-site/mailer"
 	"company-site/models"
@@ -13,8 +16,13 @@ import (
 	"github.com/joho/godotenv"
 )
 
+var (
+	submissionsMu sync.Mutex
+	submissions   = make(map[string]time.Time)
+)
+
 func main() {
-	if err := godotenv.Load(); err != nil {
+	if err := godotenv.Overload(); err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
@@ -53,7 +61,7 @@ func main() {
 		port = "8080"
 	}
 	log.Printf("Сервер запущен на http://localhost:%s", port)
-	log.Fatal(http.ListenAndServe("127.0.0.1:"+port, nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, nil))
 }
 
 // render рендерит любой templ.Component и обрабатывает ошибки
@@ -84,6 +92,21 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Bad Request", http.StatusBadRequest)
 			return
 		}
+
+		// rate limiting: не чаще раза в минуту с одного IP
+		ip, _, err := net.SplitHostPort(r.RemoteAddr)
+		if err != nil {
+			ip = r.RemoteAddr // fallback
+		}
+
+		submissionsMu.Lock()
+		last, exists := submissions[ip]
+		submissionsMu.Unlock()
+		if exists && time.Since(last) < time.Minute {
+			http.Error(w, "Слишком много запросов. Пожалуйста, подождите 1 минуту.", http.StatusTooManyRequests)
+			return
+		}
+
 		data := models.ContactFormData{
 			Name:    r.FormValue("name"),
 			Company: r.FormValue("company"),
@@ -100,6 +123,11 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 				http.Redirect(w, r, "/contact?success=0", http.StatusSeeOther)
 				return
 			}
+
+			submissionsMu.Lock()
+			submissions[ip] = time.Now()
+			submissionsMu.Unlock()
+
 			// Успех
 			http.Redirect(w, r, "/contact?success=1", http.StatusSeeOther)
 			return
