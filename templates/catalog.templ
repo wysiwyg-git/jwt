@@ -1,0 +1,71 @@
+package templates
+
+import (
+	"company-site/templates/components"
+	"company-site/models"
+    "strconv"
+)
+
+templ CatalogPage(products []models.Product, activeCategory string, currentPage, totalPages int) {
+	@Base("Каталог продукции | ПромКлей") {
+		@components.Navbar("catalog")
+		<div class="container py-5">
+			<h1 class="display-4 mb-4">Каталог продукции</h1>
+			
+			<!-- Фильтры по категориям -->
+			<div class="mb-4">
+				<div class="btn-group" role="group">
+					<a href="/catalog" class='btn { activeCategory == "" ? "btn-primary" : "btn-outline-primary" }'>Все</a>
+					for _, cat := range []string{"анаэробные", "цианоакрилатные", "эпоксидные"} {
+						<a href={ "/catalog?category=" + cat } class='btn { activeCategory == cat ? "btn-primary" : "btn-outline-primary" }'>{ cat }</a>
+					}
+				</div>
+			</div>
+
+			<!-- Сетка продуктов -->
+			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+				for _, product := range products {
+					@components.ProductCard(product)
+				}
+			</div>
+
+			<!-- Пагинация -->
+			if totalPages > 1 {
+				<nav class="mt-5">
+					<ul class="pagination justify-content-center">
+						@paginate("/catalog", activeCategory, currentPage, totalPages)
+					</ul>
+				</nav>
+			}
+		</div>
+		@components.Footer()
+	}
+}
+
+// Вспомогательная функция пагинации (рендерит элементы <li>)
+templ paginate(baseURL, category string, current, total int) {
+	if current > 1 {
+		<li class="page-item">
+			<a class="page-link" href={ pageURL(baseURL, category, current-1) }>Предыдущая</a>
+		</li>
+	}
+	for i := 1; i <= total; i++ {
+		<li class='page-item { i == current ? "active" : "" }'>
+			<a class="page-link" href={ pageURL(baseURL, category, i) }>{ strconv.Itoa(i) }</a>
+		</li>
+	}
+	if current < total {
+		<li class="page-item">
+			<a class="page-link" href={ pageURL(baseURL, category, current+1) }>Следующая</a>
+		</li>
+	}
+}
+
+// Генерация URL с параметрами категории и страницы
+func pageURL(base, category string, page int) string {
+	url := base + "?page=" + strconv.Itoa(page)
+	if category != "" {
+		url += "&category=" + category
+	}
+	return url
+}

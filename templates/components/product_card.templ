@@ -1,0 +1,19 @@
+// templates/components/product_card.templ
+package components
+
+import "company-site/models"
+
+templ ProductCard(product models.Product) {
+	<div class="col">
+		<div class="card h-100 shadow-sm product-card">
+			<div class="img-wrapper">
+				<img src={ product.Image } alt={ product.Name } class="card-img-top"/>
+			</div>
+			<div class="card-body d-flex flex-column">
+				<h5 class="card-title">{ product.Name }</h5>
+				<p class="card-text text-muted flex-grow-1">{ product.Description }</p>
+				<a href="/contact" class="btn btn-outline-primary btn-sm mt-2">Запросить цену</a>
+			</div>
+		</div>
+	</div>
+}

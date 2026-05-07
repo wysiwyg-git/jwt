@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"strconv"
 	"sync"
 	"time"
 
@@ -20,6 +21,8 @@ var (
 	submissionsMu sync.Mutex
 	submissions   = make(map[string]time.Time)
 )
+
+const productsPerPage = 6
 
 func main() {
 	if err := godotenv.Overload(); err != nil {
@@ -54,6 +57,9 @@ func main() {
 
 	// Контакты
 	http.HandleFunc("/contact", contactHandler)
+
+	// Каталог
+	http.HandleFunc("/catalog", catalogHandler)
 
 	// Запуск сервера
 	port := os.Getenv("PORT")
@@ -137,4 +143,39 @@ func contactHandler(w http.ResponseWriter, r *http.Request) {
 	default:
 		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 	}
+}
+
+func catalogHandler(w http.ResponseWriter, r *http.Request) {
+	category := r.URL.Query().Get("category")
+	pageStr := r.URL.Query().Get("page")
+	page := 1
+	if p, err := strconv.Atoi(pageStr); err == nil && p > 0 {
+		page = p
+	}
+
+	// Фильтрация
+	var filtered []models.Product
+	for _, p := range models.AllProducts {
+		if category == "" || p.Category == category {
+			filtered = append(filtered, p)
+		}
+	}
+
+	// Пагинация
+	totalProducts := len(filtered)
+	totalPages := (totalProducts + productsPerPage - 1) / productsPerPage
+	if totalPages < 1 {
+		totalPages = 1
+	}
+	if page > totalPages {
+		page = totalPages
+	}
+	start := (page - 1) * productsPerPage
+	end := start + productsPerPage
+	if end > totalProducts {
+		end = totalProducts
+	}
+	pageProducts := filtered[start:end]
+
+	render(w, r, templates.CatalogPage(pageProducts, category, page, totalPages))
 }
