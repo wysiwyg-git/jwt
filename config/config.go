@@ -1,7 +1,7 @@
 package config
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -24,10 +24,10 @@ type SMTPConfig struct {
 }
 
 // Load загружает конфигурацию из .env файла и переменных окружения.
-func Load() *Config {
+func Load() (*Config, error) {
 	// Загружаем .env файл (если есть), игнорируем ошибку для продакшена.
 	if err := godotenv.Overload(); err != nil {
-		log.Println("Info: .env file not found, using system environment variables")
+		return nil, fmt.Errorf("error read env file: %w", err)
 	}
 
 	cfg := &Config{
@@ -42,12 +42,17 @@ func Load() *Config {
 		},
 	}
 
-	// Простейшая проверка обязательных SMTP-настроек (опционально)
-	if cfg.SMTP.Host == "" || cfg.SMTP.Port == "" || cfg.SMTP.To == "" {
-		log.Println("Warning: SMTP is not fully configured. Email sending will fail.")
+	// Простейшая проверка обязательных SMTP-настроек
+	if cfg.SMTP.Host == "" ||
+		cfg.SMTP.Port == "" ||
+		cfg.SMTP.Username == "" ||
+		cfg.SMTP.Password == "" ||
+		cfg.SMTP.From == "" ||
+		cfg.SMTP.To == "" {
+		return nil, fmt.Errorf("check config for SMTP vars in env")
 	}
 
-	return cfg
+	return cfg, nil
 }
 
 // getEnv возвращает значение переменной окружения или значение по умолчанию.
