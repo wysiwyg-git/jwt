@@ -7,7 +7,7 @@ import (
 )
 
 templ CatalogPage(products []models.Product, activeCategory string, currentPage, totalPages int) {
-	@Base("Каталог продукции | ПромКлей") {
+	@Base("Каталог продукции | JWT") {
 		@components.Navbar("catalog")
 		<div class="container py-5">
 			<h1 class="display-4 mb-4">Каталог продукции</h1>

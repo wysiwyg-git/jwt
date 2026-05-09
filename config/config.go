@@ -49,7 +49,7 @@ func Load() (*Config, error) {
 		cfg.SMTP.Password == "" ||
 		cfg.SMTP.From == "" ||
 		cfg.SMTP.To == "" {
-		return nil, fmt.Errorf("check config for SMTP vars in env")
+		return nil, fmt.Errorf("check config for SMTP vars in env (SMTP_HOST or SMTP_PORT or SMTP_USER or SMTP_PASSWORD or SMTP_FROM or SMTP_TO not configured)")
 	}
 
 	return cfg, nil

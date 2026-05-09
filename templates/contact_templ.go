@@ -50,7 +50,7 @@ func ContactPage(data models.ContactFormData, success string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Контакты</h1><div class=\"row\"><div class=\"col-md-5 mb-4\"><!-- Реквизиты (без изменений) --></div><div class=\"col-md-7\"><div class=\"card shadow-sm\"><div class=\"card-body p-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, " <div class=\"container py-5\"><h1 class=\"display-4 mb-4\">Контакты</h1><div class=\"row\"><div class=\"col-md-5 mb-4\"><p><strong>Телефон:</strong> +7 (000) 000-00-00</p><p><strong>Email:</strong> info@company.ru</p><p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p></div><div class=\"col-md-7\"><div class=\"card shadow-sm\"><div class=\"card-body p-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -83,7 +83,7 @@ func ContactPage(data models.ContactFormData, success string) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = Base("Контакты | ПромКлей").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Base("Контакты | JWT").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

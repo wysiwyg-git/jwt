@@ -6,13 +6,15 @@ import (
 )
 
 templ ContactPage(data models.ContactFormData, success string) {
-	@Base("Контакты | ПромКлей") {
+	@Base("Контакты | JWT") {
 		@components.Navbar("contact")
 		<div class="container py-5">
 			<h1 class="display-4 mb-4">Контакты</h1>
 			<div class="row">
 				<div class="col-md-5 mb-4">
-					<!-- Реквизиты (без изменений) -->
+					<p><strong>Телефон:</strong> +7 (000) 000-00-00</p>
+					<p><strong>Email:</strong> info@company.ru</p>
+					<p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p>
 				</div>
 				<div class="col-md-7">
 					<div class="card shadow-sm">

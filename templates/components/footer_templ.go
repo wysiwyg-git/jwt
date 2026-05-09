@@ -34,33 +34,20 @@ func Footer() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"bg-dark text-white pt-5 pb-4\"><div class=\"container\"><div class=\"row\"><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Компания</h5><p class=\"text-muted small\">Профессиональные IT-решения с ")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<footer class=\"bg-dark text-white pt-5 pb-4\"><div class=\"container\"><div class=\"row\"><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Компания</h5><p class=\"text-white small\">Занимаеся поставкой с 2005 года.</p></div><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Ссылки</h5><ul class=\"list-unstyled\"><li><a href=\"/about\" class=\"text-decoration-none text-white-50\">О нас</a></li><li><a href=\"/services\" class=\"text-decoration-none text-white-50\">Услуги</a></li><li><a href=\"/contact\" class=\"text-decoration-none text-white-50\">Контакты</a></li></ul></div><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Следите за нами</h5><a href=\"#\" class=\"text-white me-2\"><i class=\"bi bi-telegram fs-5\"></i></a> <a href=\"#\" class=\"text-white me-2\"><i class=\"bi bi-whatsapp fs-5\"></i></a> <a href=\"#\" class=\"text-white\"><i class=\"bi bi-envelope fs-5\"></i></a></div></div><hr class=\"border-secondary\"><div class=\"text-center text-white small\">&copy; ")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var2 string
 		templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", time.Now().Year()))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 14, Col: 125}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 33, Col: 49}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " года.</p></div><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Ссылки</h5><ul class=\"list-unstyled\"><li><a href=\"/about\" class=\"text-decoration-none text-white-50\">О нас</a></li><li><a href=\"/services\" class=\"text-decoration-none text-white-50\">Услуги</a></li><li><a href=\"/contact\" class=\"text-decoration-none text-white-50\">Контакты</a></li></ul></div><div class=\"col-md-4 mb-3\"><h5 class=\"fw-bold\">Следите за нами</h5><a href=\"#\" class=\"text-white me-2\"><i class=\"bi bi-telegram fs-5\"></i></a> <a href=\"#\" class=\"text-white me-2\"><i class=\"bi bi-whatsapp fs-5\"></i></a> <a href=\"#\" class=\"text-white\"><i class=\"bi bi-envelope fs-5\"></i></a></div></div><hr class=\"border-secondary\"><div class=\"text-center text-muted small\">&copy; ")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var3 string
-		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("%d", time.Now().Year()))
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `templates/components/footer.templ`, Line: 33, Col: 49}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " Компания. Все права защищены.</div></div></footer>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, " JWT. Все права защищены.</div></div></footer>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
